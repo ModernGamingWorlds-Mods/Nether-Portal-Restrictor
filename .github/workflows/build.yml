@@ -35,9 +35,9 @@ jobs:
       - name: Publish 1.18.2-forge
         uses: Kir-Antipov/mc-publish@v3
         with:
-          curseforge-id: ${{ secrets.CURSEFORGE_ID }}
+          curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          modrinth-id: ${{ secrets.MODRINTH_ID }}
+          modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           files: versions/1.18.2-forge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.18.2 Forge"
@@ -50,9 +50,9 @@ jobs:
       - name: Publish 1.19.2-forge
         uses: Kir-Antipov/mc-publish@v3
         with:
-          curseforge-id: ${{ secrets.CURSEFORGE_ID }}
+          curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          modrinth-id: ${{ secrets.MODRINTH_ID }}
+          modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           files: versions/1.19.2-forge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.19.2 Forge"
@@ -65,9 +65,9 @@ jobs:
       - name: Publish 1.20.1-forge
         uses: Kir-Antipov/mc-publish@v3
         with:
-          curseforge-id: ${{ secrets.CURSEFORGE_ID }}
+          curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          modrinth-id: ${{ secrets.MODRINTH_ID }}
+          modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           files: versions/1.20.1-forge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.20.1 Forge"
@@ -80,9 +80,9 @@ jobs:
       - name: Publish 1.20.1-neoforge
         uses: Kir-Antipov/mc-publish@v3
         with:
-          curseforge-id: ${{ secrets.CURSEFORGE_ID }}
+          curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          modrinth-id: ${{ secrets.MODRINTH_ID }}
+          modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           files: versions/1.20.1-neoforge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.20.1 NeoForge"
@@ -95,9 +95,9 @@ jobs:
       - name: Publish 1.21.1-neoforge
         uses: Kir-Antipov/mc-publish@v3
         with:
-          curseforge-id: ${{ secrets.CURSEFORGE_ID }}
+          curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          modrinth-id: ${{ secrets.MODRINTH_ID }}
+          modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           files: versions/1.21.1-neoforge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.21.1 NeoForge"
@@ -110,9 +110,9 @@ jobs:
       - name: Publish 26.1-neoforge
         uses: Kir-Antipov/mc-publish@v3
         with:
-          curseforge-id: ${{ secrets.CURSEFORGE_ID }}
+          curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
-          modrinth-id: ${{ secrets.MODRINTH_ID }}
+          modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
           files: versions/26.1-neoforge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 26.1 NeoForge"
