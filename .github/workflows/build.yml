@@ -117,7 +117,7 @@ jobs:
           files: versions/26.1-neoforge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 26.1 NeoForge"
           version: "${{ github.ref_name }}+26.1-neoforge"
-          version-type: alpha
+          version-type: beta
           changelog: "See release notes on GitHub."
           game-versions: "26.1"
           loaders: "neoforge"
