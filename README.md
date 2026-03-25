@@ -1,48 +1,64 @@
 <div align="center">
-  <img src="https://www.bisecthosting.com/images/CF/NETHER_PORTAL_RESTRICTOR/NETHER_PORTAL_RESTRICTOR_Header.webp" alt="Alt text" width="80%" />
-</div>
-<div align="center">
-  <img src="https://www.bisecthosting.com/images/CF/NETHER_PORTAL_RESTRICTOR/NETHER_PORTAL_RESTRICTOR_Description.webp" alt="Alt text" width="80%" />
-</div>
 
-<div align="center">
-  <p>Welcome to Nether Portal Restrictor!
+<img src="https://www.bisecthosting.com/images/CF/NETHER_PORTAL_RESTRICTOR/NETHER_PORTAL_RESTRICTOR_Header.webp" alt="Nether Portal Restrictor" />
 
-Created by Gigabit101, this mod was designed specifically to solve a portal-related issue in the Monumental Experience modpack—where Nether portals could be unintentionally generated through various means such as world generation, accidental portal lighting, and other mechanics.
+<br><br>
 
-Nether Portal Restrictor prevents unwanted Nether portal creation while still preserving access to the Nether dimension via the Dim Paintings: Nether Painting. This ensures better control over dimensional travel, maintaining the intended gameplay flow and reducing unexpected portal behavior in your world.</p>
-</div>
+<a href="https://bisecthosting.com/ModernGamingWorld">
+  <img src="https://www.bisecthosting.com/images/CF/NETHER_PORTAL_RESTRICTOR/NETHER_PORTAL_RESTRICTOR_Promo2.webp" alt="BisectHosting" />
+</a>
 
+<br><br>
 
-<div align="center">
-  <img src="https://www.bisecthosting.com/images/CF/NETHER_PORTAL_RESTRICTOR/NETHER_PORTAL_RESTRICTOR_Faq.webp" alt="Alt text" width="80%" />
-</div>
+Nether Portal Restrictor is a utility mod designed to prevent unwanted Nether portal creation, giving full control over how players access the Nether dimension.
 
+It ensures that portal behavior aligns with intended gameplay design and progression systems.
 
-<div align="center">
-  <p>What does this mod do?
+---
 
-This mod disables the ability to light Nether portals and removes or breaks any Nether portals that generate in your world.
+## 🚀 Features
 
-Why does this mod exist?
+- Disables manual Nether portal lighting  
+- Prevents portals generated through world generation or other mechanics  
+- Removes or breaks unintended portal formations  
+- Maintains controlled access to the Nether  
 
-This mod exists because of a feature in Monumental Experience, where the owner wanted custom Nether portal access through Dim Paintings' Nether Painting.
+---
 
+## ⚙️ Purpose
 
+Nether Portal Restrictor was created to solve issues with uncontrolled portal generation in modded environments.
 
-Can this mod be used in other packs?
+It is especially useful for progression-based modpacks where Nether access is intentionally gated or redesigned.
 
-Yes, but remember you would have to provide another way to the Nether Dimension.
+---
 
+## 📥 Installation
 
+1. Install Minecraft Forge **or** NeoForge (compatible version)  
+2. Download the latest release  
+3. Place the `.jar` file into your `mods` folder  
+4. Launch the game  
 
-What Minecraft version does this mod support?
+---
 
-Forge & NeoForge.</p>
-</div>
+## 📌 Notes
 
-<div align="center">
-  <a href="https://bisecthosting.com/moderngamingworld" target="_blank">
-    <img src="https://www.bisecthosting.com/images/CF/NETHER_PORTAL_RESTRICTOR/NETHER_PORTAL_RESTRICTOR_Promo2.webp" alt="Alt text" width="80%" />
-  </a>
+- Designed primarily for structured and progression-based modpacks  
+- Can be used in any modpack that requires controlled Nether access  
+- You must provide an alternative method to access the Nether dimension  
+
+---
+
+## 🐞 Support
+
+If you encounter any issues or bugs, please open an issue on this repository.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.  
+See the `LICENSE` file for more details.
+
 </div>
