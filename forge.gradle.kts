@@ -4,8 +4,9 @@ plugins {
 }
 
 val modId: String = property("mod_id") as String
-val modVersion: String = property("mod_version") as String
+val modVersion: String = providers.environmentVariable("VERSION").getOrElse(property("mod_version") as String)
 val mcVersion: String = property("mc_version") as String
+val modLoader: String = property("mod_loader") as String
 val forgeVersion: String = property("forge_version") as String
 val javaVersion: String = property("java_version") as String
 
@@ -20,8 +21,8 @@ val expandProps = mapOf(
 )
 
 group = property("group") as String
-version = modVersion
-base.archivesName.set(modId)
+version = "$modVersion+$modLoader"
+base.archivesName.set("$modId-$mcVersion")
 
 java {
     toolchain {

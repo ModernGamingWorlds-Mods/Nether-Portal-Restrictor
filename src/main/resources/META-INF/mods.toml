@@ -13,14 +13,14 @@ Prevents Nether portals from being lit by igniters (flint-and-steel, fire charge
 
 [[dependencies.${mod_id}]]
 modId="${loader_dep_id}"
-type="required"
+mandatory=true
 versionRange="${loader_dep_version_range}"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="minecraft"
-type="required"
+mandatory=true
 versionRange="${mc_version_range}"
 ordering="NONE"
 side="BOTH"
