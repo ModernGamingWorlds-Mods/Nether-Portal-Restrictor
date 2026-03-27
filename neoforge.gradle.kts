@@ -27,7 +27,9 @@ val expandProps = mapOf(
     "loader_version_range" to (property("loader_version_range") as String),
     "loader_dep_id" to (property("loader_dep_id") as String),
     "loader_dep_version_range" to (property("loader_dep_version_range") as String),
-    "pack_format" to (property("pack_format") as String)
+    "pack_format" to (property("pack_format") as String),
+    "min_format" to ((findProperty("min_format") ?: property("pack_format")) as String),
+    "max_format" to ((findProperty("max_format") ?: property("pack_format")) as String)
 )
 
 group = property("group") as String
