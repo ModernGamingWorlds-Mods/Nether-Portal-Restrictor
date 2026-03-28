@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
-//? if mc: <1.21 {
+//? if forge {
 /*import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 //? if mc: <1.19 {
 import net.minecraftforge.event.world.BlockEvent;
@@ -33,7 +33,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 //?}
 
-//? if mc: <1.21 {
+//? if forge {
 /*@Mod.EventBusSubscriber(modid = NetherPortalNoMore.MODID)*/
 //?} else if standalone_ebs {
 @EventBusSubscriber(modid = NetherPortalNoMore.MODID)
