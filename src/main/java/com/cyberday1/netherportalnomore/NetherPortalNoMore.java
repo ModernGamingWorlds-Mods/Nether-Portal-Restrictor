@@ -1,6 +1,6 @@
 package com.cyberday1.netherportalnomore;
 
-//? if forge {
+//? if mc: <1.21 {
 /*import net.minecraftforge.fml.common.Mod;*/
 //?} else
 import net.neoforged.fml.common.Mod;
