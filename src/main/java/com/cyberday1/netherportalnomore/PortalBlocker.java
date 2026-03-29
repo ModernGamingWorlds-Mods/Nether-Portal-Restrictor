@@ -118,7 +118,8 @@ public final class PortalBlocker {
         return item instanceof FlintAndSteelItem || item instanceof FireChargeItem;
     }
 
-    // Detects The Undergarden's Catalyst item by registry name to avoid a hard dependency.
+    // Detects The Undergarden's Catalyst and CrumblingCatalyst items by registry name
+    // to avoid a hard dependency on the mod.
     private static boolean isCatalystItem(ItemStack stack) {
         if (stack.isEmpty()) {
             return false;
@@ -128,6 +129,10 @@ public final class PortalBlocker {
         //?} else {
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
         //?}
-        return id != null && "undergarden".equals(id.getNamespace()) && "catalyst".equals(id.getPath());
+        if (id == null || !"undergarden".equals(id.getNamespace())) {
+            return false;
+        }
+        String path = id.getPath();
+        return "catalyst".equals(path) || "crumbling_catalyst".equals(path);
     }
 }
