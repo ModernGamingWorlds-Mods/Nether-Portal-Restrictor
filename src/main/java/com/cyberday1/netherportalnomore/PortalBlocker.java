@@ -10,15 +10,8 @@ import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.tags.TagKey;
-import net.minecraft.resources.ResourceLocation;
-//? if mc: >=1.20 {
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-//?}
 
 //? if mc: <1.21 {
 /*import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -50,22 +43,13 @@ public final class PortalBlocker {
 
     private PortalBlocker() {}
 
-    // Block tag for The Undergarden portal frame blocks (undergarden:portal_frame_blocks).
-    // Includes stone brick variants, deepslate variants, and mod-specific blocks.
-    //? if mc: <1.20 {
-    /*private static final TagKey<Block> UNDERGARDEN_PORTAL_FRAME =
-        TagKey.create(net.minecraft.core.Registry.BLOCK_REGISTRY, new ResourceLocation("undergarden", "portal_frame_blocks"));*/
-    //?} else if mc: <1.21 {
-    /*private static final TagKey<Block> UNDERGARDEN_PORTAL_FRAME =
-        TagKey.create(Registries.BLOCK, new ResourceLocation("undergarden", "portal_frame_blocks"));*/
-    //?} else {
-    private static final TagKey<Block> UNDERGARDEN_PORTAL_FRAME =
-        TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("undergarden", "portal_frame_blocks"));
-    //?}
-
     @SubscribeEvent
     public static void onPortalSpawn(BlockEvent.PortalSpawnEvent event) {
-        event.setCanceled(true);
+        // Only cancel Nether portal spawns. Other mods (e.g. The Undergarden) may fire
+        // this event for their own portals and should not be affected.
+        if (event.getPortalBlock().is(Blocks.NETHER_PORTAL)) {
+            event.setCanceled(true);
+        }
     }
 
     @SubscribeEvent
@@ -79,28 +63,23 @@ public final class PortalBlocker {
         }
 
         ItemStack stack = event.getItemStack();
-        if (stack.isEmpty()) {
+        if (!isPortalLightingItem(stack)) {
             return;
         }
 
         BlockPos clickedPos = event.getPos();
         BlockState clickedState = level.getBlockState(clickedPos);
-
-        // Nether portal: standard igniter used on obsidian, with air on the clicked face
-        if (isPortalLightingItem(stack) && clickedState.is(Blocks.OBSIDIAN)) {
-            BlockPos firePos = clickedPos.relative(event.getFace());
-            if (level.getBlockState(firePos).isAir()) {
-                event.setCancellationResult(InteractionResult.FAIL);
-                event.setCanceled(true);
-            }
+        if (!clickedState.is(Blocks.OBSIDIAN)) {
             return;
         }
 
-        // The Undergarden portal: catalyst used on any portal frame block
-        if (isCatalystItem(stack) && clickedState.is(UNDERGARDEN_PORTAL_FRAME)) {
-            event.setCancellationResult(InteractionResult.FAIL);
-            event.setCanceled(true);
+        BlockPos firePos = clickedPos.relative(event.getFace());
+        if (!level.getBlockState(firePos).isAir()) {
+            return;
         }
+
+        event.setCancellationResult(InteractionResult.FAIL);
+        event.setCanceled(true);
     }
 
     private static boolean isPortalLightingItem(ItemStack stack) {
@@ -116,23 +95,5 @@ public final class PortalBlocker {
 
         Item item = stack.getItem();
         return item instanceof FlintAndSteelItem || item instanceof FireChargeItem;
-    }
-
-    // Detects The Undergarden's Catalyst and CrumblingCatalyst items by registry name
-    // to avoid a hard dependency on the mod.
-    private static boolean isCatalystItem(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return false;
-        }
-        //? if mc: <1.20 {
-        /*ResourceLocation id = net.minecraft.core.Registry.ITEM.getKey(stack.getItem());*/
-        //?} else {
-        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
-        //?}
-        if (id == null || !"undergarden".equals(id.getNamespace())) {
-            return false;
-        }
-        String path = id.getPath();
-        return "catalyst".equals(path) || "crumbling_catalyst".equals(path);
     }
 }
