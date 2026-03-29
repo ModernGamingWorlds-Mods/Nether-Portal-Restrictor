@@ -45,11 +45,7 @@ public final class PortalBlocker {
 
     @SubscribeEvent
     public static void onPortalSpawn(BlockEvent.PortalSpawnEvent event) {
-        // Only cancel Nether portal spawns. Other mods (e.g. The Undergarden) may fire
-        // this event for their own portals and should not be affected.
-        if (event.getPortalBlock().is(Blocks.NETHER_PORTAL)) {
-            event.setCanceled(true);
-        }
+        event.setCanceled(true);
     }
 
     @SubscribeEvent
