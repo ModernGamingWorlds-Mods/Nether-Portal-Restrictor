@@ -3,25 +3,38 @@ plugins {
     id("net.neoforged.moddev.legacyforge")
 }
 
+// Version-specific properties
 val modId: String = property("mod_id") as String
-val modVersion: String = property("mod_version") as String
+val modVersion: String = providers.environmentVariable("VERSION").getOrElse(property("mod_version") as String)
+val modName: String = property("mod_name") as String
+val modAuthor: String = property("mod_author") as String
+val license: String = property("license") as String
+val modDescription: String = property("mod_description") as String
 val mcVersion: String = property("mc_version") as String
+val modLoader: String = property("mod_loader") as String
 val forgeVersion: String = property("forge_version") as String
 val javaVersion: String = property("java_version") as String
 
+// Properties expanded into resource templates (mods.toml, pack.mcmeta, etc.)
 val expandProps = mapOf(
     "mod_id" to modId,
     "mod_version" to modVersion,
+    "mod_name" to modName,
+    "mod_author" to modAuthor,
+    "license" to license,
+    "mod_description" to modDescription,
     "mc_version_range" to (property("mc_version_range") as String),
     "loader_version_range" to (property("loader_version_range") as String),
     "loader_dep_id" to (property("loader_dep_id") as String),
     "loader_dep_version_range" to (property("loader_dep_version_range") as String),
-    "pack_format" to (property("pack_format") as String)
+    "pack_format" to (property("pack_format") as String),
+    "min_format" to ((findProperty("min_format") ?: property("pack_format")) as String),
+    "max_format" to ((findProperty("max_format") ?: property("pack_format")) as String)
 )
 
 group = property("group") as String
-version = modVersion
-base.archivesName.set(modId)
+version = "$modVersion+$modLoader"
+base.archivesName.set("$modId-$mcVersion")
 
 java {
     toolchain {
@@ -39,12 +52,8 @@ repositories {
 legacyForge {
     version = forgeVersion
     runs {
-        register("client") {
-            client()
-        }
-        register("server") {
-            server()
-        }
+        register("client") { client() }
+        register("server") { server() }
     }
     mods {
         register(modId) {
@@ -75,11 +84,11 @@ tasks.jar {
     manifest {
         attributes(
             "Specification-Title" to modId,
-            "Specification-Vendor" to "CyberDay1",
+            "Specification-Vendor" to modAuthor,
             "Specification-Version" to "1",
             "Implementation-Title" to modId,
             "Implementation-Version" to modVersion,
-            "Implementation-Vendor" to "CyberDay1"
+            "Implementation-Vendor" to modAuthor
         )
     }
 }

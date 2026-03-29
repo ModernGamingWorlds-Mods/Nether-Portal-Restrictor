@@ -23,8 +23,14 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
       - name: Build all variants
         run: ./gradlew chiseledBuild
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -33,12 +39,14 @@ jobs:
           generate_release_notes: true
 
       - name: Publish 1.18.2-forge
+        continue-on-error: true
         uses: Kir-Antipov/mc-publish@v3
         with:
           curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          fail-mode: skip
           files: versions/1.18.2-forge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.18.2 Forge"
           version: "${{ github.ref_name }}+1.18.2-forge"
@@ -46,14 +54,17 @@ jobs:
           changelog: "See release notes on GitHub."
           game-versions: "1.18.2"
           loaders: "forge"
+          java: "17"
 
       - name: Publish 1.19.2-forge
+        continue-on-error: true
         uses: Kir-Antipov/mc-publish@v3
         with:
           curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          fail-mode: skip
           files: versions/1.19.2-forge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.19.2 Forge"
           version: "${{ github.ref_name }}+1.19.2-forge"
@@ -61,14 +72,17 @@ jobs:
           changelog: "See release notes on GitHub."
           game-versions: "1.19.2"
           loaders: "forge"
+          java: "17"
 
       - name: Publish 1.20.1-forge
+        continue-on-error: true
         uses: Kir-Antipov/mc-publish@v3
         with:
           curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          fail-mode: skip
           files: versions/1.20.1-forge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.20.1 Forge"
           version: "${{ github.ref_name }}+1.20.1-forge"
@@ -76,14 +90,17 @@ jobs:
           changelog: "See release notes on GitHub."
           game-versions: "1.20.1"
           loaders: "forge"
+          java: "17"
 
       - name: Publish 1.20.1-neoforge
+        continue-on-error: true
         uses: Kir-Antipov/mc-publish@v3
         with:
           curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          fail-mode: skip
           files: versions/1.20.1-neoforge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.20.1 NeoForge"
           version: "${{ github.ref_name }}+1.20.1-neoforge"
@@ -91,14 +108,17 @@ jobs:
           changelog: "See release notes on GitHub."
           game-versions: "1.20.1"
           loaders: "neoforge"
+          java: "17"
 
       - name: Publish 1.21.1-neoforge
+        continue-on-error: true
         uses: Kir-Antipov/mc-publish@v3
         with:
           curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          fail-mode: skip
           files: versions/1.21.1-neoforge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 1.21.1 NeoForge"
           version: "${{ github.ref_name }}+1.21.1-neoforge"
@@ -106,14 +126,17 @@ jobs:
           changelog: "See release notes on GitHub."
           game-versions: "1.21.1"
           loaders: "neoforge"
+          java: "21"
 
       - name: Publish 26.1-neoforge
+        continue-on-error: true
         uses: Kir-Antipov/mc-publish@v3
         with:
           curseforge-id: ${{ vars.CURSEFORGE_ID }}
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           modrinth-id: ${{ vars.MODRINTH_ID }}
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          fail-mode: skip
           files: versions/26.1-neoforge/build/libs/!(*-sources).jar
           name: "Nether Portal Restrictor ${{ github.ref_name }} for 26.1 NeoForge"
           version: "${{ github.ref_name }}+26.1-neoforge"
@@ -121,3 +144,4 @@ jobs:
           changelog: "See release notes on GitHub."
           game-versions: "26.1"
           loaders: "neoforge"
+          java: "25"
