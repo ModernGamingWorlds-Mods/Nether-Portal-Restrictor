@@ -45,7 +45,9 @@ public final class PortalBlocker {
 
     @SubscribeEvent
     public static void onPortalSpawn(BlockEvent.PortalSpawnEvent event) {
-        event.setCanceled(true);
+        if (event.getPortalBlock().is(Blocks.NETHER_PORTAL)) {
+            event.setCanceled(true);
+        }
     }
 
     @SubscribeEvent
