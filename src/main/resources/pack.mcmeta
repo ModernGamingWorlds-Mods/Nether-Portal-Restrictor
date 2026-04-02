@@ -1,7 +1,8 @@
 {
   "pack": {
     "pack_format": ${pack_format},
-    "supported_formats": { "min_inclusive": ${min_format}, "max_inclusive": ${max_format} },
+    "min_format": ${min_format},
+    "max_format": ${max_format},
     "description": "NetherPortalNoMore resources"
   }
 }
