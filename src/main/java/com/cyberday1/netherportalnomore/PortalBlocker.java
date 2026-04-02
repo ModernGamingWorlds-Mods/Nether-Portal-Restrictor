@@ -8,6 +8,8 @@ import net.minecraft.network.chat.Component;
 //? if mc: >=1.21 {
 import net.minecraft.tags.ItemTags;
 //?}
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.FireChargeItem;
 import net.minecraft.world.item.FlintAndSteelItem;
@@ -97,6 +99,7 @@ public final class PortalBlocker {
             true
         );*/
         //?}
+        level.playSound(null, clickedPos, SoundEvents.VILLAGER_NO, SoundSource.BLOCKS, 1.0f, 1.0f);
         event.setCancellationResult(InteractionResult.FAIL);
         event.setCanceled(true);
     }
