@@ -145,3 +145,21 @@ jobs:
           game-versions: "26.1"
           loaders: "neoforge"
           java: "25"
+
+      - name: Publish 26.1.1-neoforge
+        continue-on-error: true
+        uses: Kir-Antipov/mc-publish@v3
+        with:
+          curseforge-id: ${{ vars.CURSEFORGE_ID }}
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+          modrinth-id: ${{ vars.MODRINTH_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          fail-mode: skip
+          files: versions/26.1.1-neoforge/build/libs/!(*-sources).jar
+          name: "Nether Portal Restrictor ${{ github.ref_name }} for 26.1.1 NeoForge"
+          version: "${{ github.ref_name }}+26.1.1-neoforge"
+          version-type: release
+          changelog: "See release notes on GitHub."
+          game-versions: "26.1.1"
+          loaders: "neoforge"
+          java: "25"
