@@ -1,6 +1,10 @@
 package com.cyberday1.netherportalnomore;
 
 import net.minecraft.core.BlockPos;
+//? if mc: >=1.19 {
+import net.minecraft.network.chat.Component;
+//?} else
+/*import net.minecraft.network.chat.TextComponent;*/
 //? if mc: >=1.21 {
 import net.minecraft.tags.ItemTags;
 //?}
@@ -75,6 +79,24 @@ public final class PortalBlocker {
             return;
         }
 
+        //? if mc: >=26 {
+        if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer serverPlayer) {
+            serverPlayer.sendSystemMessage(
+                Component.literal("Nether portals are disabled \u2014 check the modpack guide for alternate Nether access"),
+                true
+            );
+        }
+        //?} else if mc: >=1.19 {
+        /*event.getEntity().displayClientMessage(
+            Component.literal("Nether portals are disabled \u2014 check the modpack guide for alternate Nether access"),
+            true
+        );*/
+        //?} else {
+        /*event.getPlayer().displayClientMessage(
+            new TextComponent("Nether portals are disabled \u2014 check the modpack guide for alternate Nether access"),
+            true
+        );*/
+        //?}
         event.setCancellationResult(InteractionResult.FAIL);
         event.setCanceled(true);
     }
