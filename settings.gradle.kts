@@ -21,6 +21,7 @@ stonecutter {
         version("1.20.1-neoforge", "1.20.1")
         version("1.21.1-neoforge", "1.21.1")
         version("26.1-neoforge", "26.1")
+        version("26.1.1-neoforge", "26.1.1")
 
         mapBuilds { _, data ->
             val loader = data.project.substringAfterLast('-')
